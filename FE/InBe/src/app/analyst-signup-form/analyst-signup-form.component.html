@@ -1,0 +1,66 @@
+<div *ngIf="isLoading" class="loader">
+    <mat-spinner diameter="70" strokeWidth="2" color="yellow"></mat-spinner>
+</div>
+<div id="Header">
+    <h2>InBe-Internal</h2>
+</div>
+<div>
+    <br>
+    <br>
+    <br>
+    <div style="display: flex; align-items: center; justify-content: center;">
+        <mat-icon class="icon-text">account_circle</mat-icon><h2>Add ANALYST/ADMIN</h2>
+    </div>
+    <div id="body">
+        <br>
+        <br>
+        <form [formGroup]="loginFormControl" class="form" (ngSubmit)="onSubmit()">
+            
+            <mat-form-field class="control" appearance="fill">
+                <!-- <mat-label>Email/User Name</mat-label> -->
+                <input matInput type="text" [formControl]="firstNameFormControl" placeholder="First Name" name="firstNameFormControl">
+                <mat-error *ngIf="firstNameFormControl?.hasError('required')">
+                First Name is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <br><mat-form-field class="control" appearance="fill">
+                <!-- <mat-label>Email/User Name</mat-label> -->
+                <input matInput type="text" [formControl]="lastNameFormControl" placeholder="Last Name" name="lastNameFormControl">
+                <mat-error *ngIf="lastNameFormControl?.hasError('required')">
+                Last Name is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="control" appearance="fill">
+                <!-- <mat-label>Email/User Name</mat-label> -->
+                <input matInput type="text" [formControl]="usernameFormControl" placeholder="Email/UserName" name="usernameFormControl">
+                <mat-error *ngIf="usernameFormControl?.hasError('required')">
+                Email is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="control" appearance="fill">
+                <mat-label>Password</mat-label>
+                <input matInput type="{{passwordType}}" [formControl]="passwordFormControl" placeholder="Your Password" name="passwordFormControl">
+                <mat-icon matSuffix mat-icon-button style="font-size: 22px;" (click)="changeVisible()">visibility</mat-icon> 
+                <mat-error *ngIf="passwordFormControl?.hasError('required')">
+                    Password is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="control" appearance="fill">
+                <mat-label>Select ROLE</mat-label>
+                <mat-select [formControl]="rolesFormControl">
+                  
+                  <mat-option *ngFor="let role of roles" [value]="role">{{role}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            <br>
+            <br>
+            <div class="buttons">
+                <button mat-button routerLink="/customersList">Cancel</button>
+                <button class="button" mat-raised-button type="submit">Sign Up</button>
+            </div>
+        </form>
+</div>
+</div>

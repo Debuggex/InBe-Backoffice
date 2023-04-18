@@ -1,0 +1,44 @@
+
+<div *ngIf="isLoading" class="loader">
+    <mat-spinner diameter="70" strokeWidth="2" color="yellow"></mat-spinner>
+</div>
+<div id="Header">
+    <h2>InBe-Internal</h2>
+</div>
+<div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div style="display: flex; align-items: center; justify-content: center;">
+        <mat-icon class="icon-text">account_circle</mat-icon><h2>Login to your Back Office</h2>
+    </div>
+    <div id="body">
+            <br>
+            <br>
+            <form [formGroup]="loginFormControl" class="form" (ngSubmit)="onSubmit()">
+                
+                <mat-form-field class="control" appearance="fill">
+                    <!-- <mat-label>Email/User Name</mat-label> -->
+                    <input matInput type="text" [formControl]="usernameFormControl" placeholder="Email/UserName" name="usernameFormControl">
+                    <mat-error *ngIf="usernameFormControl?.hasError('required')">
+                    Email/Username is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="control" appearance="fill">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="{{passwordType}}" [formControl]="passwordFormControl" placeholder="Your Password" name="passwordFormControl">
+                    <mat-icon matSuffix mat-icon-button style="font-size: 22px;" (click)="changeVisible()">visibility</mat-icon>
+                    
+                    <mat-error *ngIf="passwordFormControl?.hasError('required')">
+                        Password is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+                <br>
+                <br>
+                <button class="submit-button" mat-raised-button type="submit">Sign In</button>
+            </form>
+    </div>
+</div>

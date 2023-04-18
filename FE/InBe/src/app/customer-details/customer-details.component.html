@@ -1,0 +1,82 @@
+<div *ngIf="isLoading" class="loader">
+    <mat-spinner diameter="70" strokeWidth="2" color="yellow"></mat-spinner>
+</div>
+<div id="Header">
+    <div style="width: 33%;">
+        <h2>InBe-Internal</h2>
+    </div>
+    <div style="width: 33%; display: flex; justify-content: center;">
+        <h3>User Details</h3>
+    </div>   
+    <div style="width: 33%; display: flex; justify-content: end;">
+      <button mat-button (click)="logOut()">Log out</button>
+    </div> 
+</div>
+<div>
+<br>
+<br>
+<div id="body">
+    <div class="bodyTop">
+        <mat-grid-list cols="4" rowHeight="100px">
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <div class="value">
+                    <p class="title">Name</p>
+                    <br>
+                    <h3>{{name}}</h3>
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <div class="value">
+                    <p class="title">Email</p>
+                    <br>
+                    <h3>{{email}}</h3>
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <div class="value">
+                    <p class="title">Purpose</p>
+                    <br>
+                    <h3>{{purpose}}</h3>
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <div class="value">
+                    <p class="title">Links</p>
+                    <br>
+                    <div class="link">
+                        <button mat-icon-button class="icon-button" color="primary" (click)="goToLink('facebook')">
+                            <mat-icon class="icon" svgIcon="facebook"></mat-icon>
+                        </button>
+                        <button mat-icon-button class="icon-button" color="primary" (click)="goToLink('instagram')">
+                            <mat-icon class="icon" svgIcon="instagram"></mat-icon>
+                        </button>
+                        <button mat-icon-button class="icon-button" color="primary" (click)="goToLink('linkedin')">
+                            <mat-icon class="icon" svgIcon="linkedin"></mat-icon>
+                        </button>
+                        <button mat-icon-button class="icon-button" color="primary" (click)="downloadCV()">
+                            <mat-icon class="icon" svgIcon="cv"></mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+    <br>
+    <br>
+    <div class="separator">
+        <hr width="90%">
+    </div>
+    <br>
+    <br>
+    <div style="align-items: center; justify-content: center;display: flex;flex-direction: column;">
+        <div *ngFor="let item of data" style="width: 90%;">
+                <mat-card>
+                        <mat-card-title>{{item.question}}</mat-card-title>
+                        <mat-card-subtitle>{{item.type}}</mat-card-subtitle>
+                        <mat-card-content *ngFor="let ans of item.answer">{{ans}}</mat-card-content>                 
+                </mat-card>
+                <br>
+        </div>
+    </div>
+    
+</div>
